@@ -1,20 +1,44 @@
 function calcular() {
-  const capital = parseFloat(document.getElementById("capital").value);
-  const taxa = parseFloat(document.getElementById("taxa").value) / 100;
-  const tempo = parseInt(document.getElementById("tempo").value);
+  const valorInicial = Number(document.getElementById('valorInicial').value) || 0;
+  const aporte = Number(document.getElementById('aporte').value) || 0;
+  let taxa = Number(document.getElementById('taxa').value) / 100;
+  let periodo = Number(document.getElementById('periodo').value);
 
-  if (isNaN(capital) || isNaN(taxa) || isNaN(tempo)) {
-    alert("Preencha todos os campos corretamente.");
-    return;
+  const tipoTaxa = document.getElementById('tipoTaxa').value;
+  const tipoPeriodo = document.getElementById('tipoPeriodo').value;
+
+  if (tipoTaxa === 'anual') {
+    taxa = Math.pow(1 + taxa, 1 / 12) - 1;
   }
 
-  const montante = capital * Math.pow(1 + taxa, tempo);
-  const juros = montante - capital;
+  if (tipoPeriodo === 'anos') {
+    periodo = periodo * 12;
+  }
 
-  document.getElementById("capitalOut").innerText = capital.toFixed(2);
-  document.getElementById("taxaOut").innerText = (taxa * 100).toFixed(2);
-  document.getElementById("tempoOut").innerText = tempo;
-  document.getElementById("montante").innerText = montante.toFixed(2);
-  document.getElementById("juros").innerText = juros.toFixed(2);
-  document.getElementById("resultadoFinal").innerText = montante.toFixed(2);
+  let saldo = valorInicial;
+  let totalInvestido = valorInicial;
+  const tbody = document.getElementById('tabelaEvolucao');
+  tbody.innerHTML = '';
+
+  for (let i = 1; i <= periodo; i++) {
+    saldo += aporte;
+    totalInvestido += aporte;
+
+    const juros = saldo * taxa;
+    saldo += juros;
+
+    const linha = `
+      <tr>
+        <td>${i}</td>
+        <td>R$ ${totalInvestido.toFixed(2)}</td>
+        <td>R$ ${juros.toFixed(2)}</td>
+        <td>R$ ${saldo.toFixed(2)}</td>
+      </tr>
+    `;
+    tbody.innerHTML += linha;
+  }
+
+  document.getElementById('montanteFinal').innerText = saldo.toFixed(2);
+  document.getElementById('totalInvestido').innerText = totalInvestido.toFixed(2);
+  document.getElementById('rendimento').innerText = (saldo - totalInvestido).toFixed(2);
 }
