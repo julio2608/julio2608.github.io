@@ -1,4 +1,6 @@
-/* RESET */
+/* =========================
+   RESET
+========================= */
 * {
   box-sizing: border-box;
   font-family: 'Segoe UI', Roboto, Arial, sans-serif;
@@ -11,40 +13,48 @@ body {
 }
 
 /* =========================
-   BREADCRUMB (OPÇÃO 1)
+   NAVBAR / BREADCRUMB
 ========================= */
-.breadcrumb-bar {
+.navbar {
+  width: 100%;
   background: #ffffff;
   border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-.breadcrumb-container {
+.nav-container {
   max-width: 760px;
   margin: auto;
-  padding: 8px 12px;
-  font-size: 0.75rem;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1e3a8a;
+}
+
+.breadcrumb {
   display: flex;
   align-items: center;
   gap: 6px;
+  font-size: 0.8rem;
+  color: #6b7280;
 }
 
-.breadcrumb-link {
+.breadcrumb a {
   color: #2563eb;
-  font-weight: 600;
   text-decoration: none;
-}
-
-.breadcrumb-link:hover {
-  text-decoration: underline;
-}
-
-.breadcrumb-sep {
-  color: #9ca3af;
-}
-
-.breadcrumb-current {
-  color: #374151;
   font-weight: 600;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
 }
 
 /* =========================
@@ -53,13 +63,14 @@ body {
 .topo {
   background: #0b4ea2;
   color: #ffffff;
-  padding: 20px 15px;
+  padding: 16px 12px;
   text-align: center;
 }
 
 .topo h1 {
   margin: 0;
-  font-size: 1.4rem;
+  font-size: 1.35rem;
+  font-weight: 600;
 }
 
 .topo p {
@@ -77,19 +88,19 @@ body {
 ========================= */
 .container {
   max-width: 760px;
-  margin: 20px auto;
+  margin: 18px auto;
   padding: 0 12px;
 }
 
 /* =========================
-   CARD
+   CARDS
 ========================= */
 .card {
   background: #ffffff;
   border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  margin-bottom: 14px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  padding: 14px;
 }
 
 /* =========================
@@ -97,33 +108,40 @@ body {
 ========================= */
 label {
   display: block;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  margin-top: 12px;
+  margin-bottom: 4px;
+  margin-top: 10px;
 }
 
 input[type="number"] {
   width: 100%;
-  padding: 9px;
+  padding: 8px 10px;
   border-radius: 6px;
   border: 1px solid #d1d5db;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+}
+
+input:focus {
+  outline: none;
+  border-color: #2563eb;
 }
 
 /* =========================
    BOTÃO
 ========================= */
 .acoes {
-  text-align: center;
-  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  margin-top: 14px;
 }
 
 button {
   background: #2563eb;
   color: #ffffff;
   border: none;
-  padding: 10px 26px;
-  font-size: 0.85rem;
+  padding: 9px 24px;
+  font-size: 0.9rem;
   font-weight: 600;
   border-radius: 6px;
   cursor: pointer;
@@ -139,16 +157,20 @@ button:hover {
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  font-size: 0.8rem;
+  row-gap: 8px;
+  column-gap: 10px;
 }
 
 .label {
+  font-size: 0.8rem;
   font-weight: 600;
+  color: #374151;
 }
 
 .value {
+  font-size: 0.8rem;
   text-align: right;
+  color: #111827;
 }
 
 /* =========================
@@ -171,33 +193,9 @@ button:hover {
 ========================= */
 .aviso {
   margin-top: 10px;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: #6b7280;
   text-align: center;
-}
-
-/* =========================
-   BOTÃO FLUTUANTE (OPÇÃO 2)
-========================= */
-.btn-float-home {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  background: #2563eb;
-  color: #ffffff;
-  text-decoration: none;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-}
-
-.btn-float-home:hover {
-  background: #1d4ed8;
 }
 
 /* =========================
@@ -210,5 +208,11 @@ button:hover {
 
   .value {
     text-align: left;
+  }
+
+  .nav-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
   }
 }
