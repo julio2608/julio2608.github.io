@@ -1,304 +1,39 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>Simulador de Juros Compostos</title>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
-    }
-
-    body {
-      margin: 0;
-      background: #f4f6f9;
-      color: #1f2937;
-    }
-
-    /* Topbar */
-    .topbar {
-      background: #ffffff;
-      border-bottom: 1px solid #e5e7eb;
-      padding: 12px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .btn-home {
-      text-decoration: none;
-      font-weight: 600;
-      color: #2563eb;
-      padding: 6px 12px;
-      border-radius: 6px;
-    }
-
-    .btn-home:hover {
-      background: #eff6ff;
-    }
-
-    /* Header */
-    header {
-      background: #0b4ea2;
-      color: #ffffff;
-      text-align: center;
-      padding: 25px 15px;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 1.6rem;
-    }
-
-    header p {
-      margin: 6px 0 0;
-      font-size: 0.9rem;
-      opacity: 0.9;
-    }
-
-    /* Container */
-    .container {
-      max-width: 900px;
-      margin: 25px auto;
-      padding: 0 15px;
-    }
-
-    .card {
-      background: #ffffff;
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    }
-
-    h2 {
-      margin-top: 0;
-      font-size: 1.2rem;
-      color: #1e3a8a;
-    }
-
-    /* Form */
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 15px;
-    }
-
-    label {
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 4px;
-      display: block;
-    }
-
-    input, select {
-      width: 100%;
-      padding: 9px 10px;
-      border-radius: 6px;
-      border: 1px solid #d1d5db;
-      font-size: 0.9rem;
-    }
-
-    input:focus, select:focus {
-      outline: none;
-      border-color: #2563eb;
-    }
-
-    .acoes {
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    button {
-      background: #2563eb;
-      color: #ffffff;
-      border: none;
-      padding: 10px 28px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #1d4ed8;
-    }
-
-    /* Resultado */
-    .resultado-final {
-      margin-top: 15px;
-      padding: 14px;
-      background: #ecfdf5;
-      border: 1px solid #10b981;
-      border-radius: 8px;
-      text-align: center;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #065f46;
-    }
-
-    /* Tabela */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 15px;
-      font-size: 0.85rem;
-    }
-
-    th, td {
-      padding: 8px;
-      border-bottom: 1px solid #e5e7eb;
-      text-align: right;
-    }
-
-    th {
-      background: #f9fafb;
-      font-weight: 600;
-    }
-
-    th:first-child, td:first-child {
-      text-align: center;
-    }
-
-    canvas {
-      max-width: 100%;
-    }
-
-    .aviso {
-      font-size: 0.75rem;
-      color: #6b7280;
-      text-align: center;
-      margin-top: 10px;
-    }
-  </style>
-</head>
-
-<body>
-
-<div class="topbar">
-  <a href="/" class="btn-home">← Início</a>
-</div>
-
-<header>
-  <h1>Simulador de Juros Compostos</h1>
-  <p>Com aportes e retiradas mensais</p>
-</header>
-
-<div class="container">
-
-  <!-- FORMULÁRIO -->
-  <div class="card">
-    <h2>Dados da Simulação</h2>
-
-    <div class="form-grid">
-      <div>
-        <label>Valor inicial (R$)</label>
-        <input type="number" id="valorInicial" step="0.01">
-      </div>
-
-      <div>
-        <label>Aporte mensal (R$)</label>
-        <input type="number" id="aporte" step="0.01">
-      </div>
-
-      <div>
-        <label>Retirada mensal (R$)</label>
-        <input type="number" id="retirada" step="0.01">
-      </div>
-
-      <div>
-        <label>Taxa de juros (%)</label>
-        <input type="number" id="taxa" step="0.01">
-      </div>
-
-      <div>
-        <label>Tipo da taxa</label>
-        <select id="tipoTaxa">
-          <option value="mensal">Mensal</option>
-          <option value="anual">Anual</option>
-        </select>
-      </div>
-
-      <div>
-        <label>Período</label>
-        <input type="number" id="periodo">
-      </div>
-
-      <div>
-        <label>Tipo do período</label>
-        <select id="tipoPeriodo">
-          <option value="meses">Meses</option>
-          <option value="anos">Anos</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="acoes">
-      <button onclick="calcular()">Calcular</button>
-    </div>
-  </div>
-
-  <!-- GRÁFICO -->
-  <div class="card">
-    <h2>Evolução do Saldo</h2>
-    <canvas id="graficoSaldo" height="120"></canvas>
-  </div>
-
-  <!-- TABELA -->
-  <div class="card">
-    <h2>Tabela de Evolução</h2>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Mês</th>
-          <th>Total Investido</th>
-          <th>Juros</th>
-          <th>Saldo</th>
-        </tr>
-      </thead>
-      <tbody id="tabelaEvolucao"></tbody>
-    </table>
-
-    <div class="resultado-final">
-      Saldo Final: R$ <span id="montanteFinal">0,00</span>
-    </div>
-
-    <div class="aviso">
-      Simulação com finalidade educativa.
-    </div>
-  </div>
-
-</div>
-
 <script>
-let grafico;
+let grafico = null;
 
 function calcular() {
-  const valorInicial = Number(valorInicial.value) || 0;
-  const aporte = Number(aporte.value) || 0;
-  const retirada = Number(retirada.value) || 0;
-  let taxa = Number(taxaInput.value) / 100;
-  let periodo = Number(periodoInput.value);
+  // === PEGAR ELEMENTOS ===
+  const valorInicialInput = document.getElementById("valorInicial");
+  const aporteInput = document.getElementById("aporte");
+  const retiradaInput = document.getElementById("retirada");
+  const taxaInput = document.getElementById("taxa");
+  const tipoTaxaSelect = document.getElementById("tipoTaxa");
+  const periodoInput = document.getElementById("periodo");
+  const tipoPeriodoSelect = document.getElementById("tipoPeriodo");
+  const tabela = document.getElementById("tabelaEvolucao");
+  const montanteFinalSpan = document.getElementById("montanteFinal");
 
-  if (tipoTaxa.value === 'anual') {
+  // === VALORES ===
+  const valorInicial = Number(valorInicialInput.value) || 0;
+  const aporte = Number(aporteInput.value) || 0;
+  const retirada = Number(retiradaInput.value) || 0;
+  let taxa = Number(taxaInput.value) / 100;
+  let periodo = Number(periodoInput.value) || 0;
+
+  // === CONVERSÕES ===
+  if (tipoTaxaSelect.value === "anual") {
     taxa = Math.pow(1 + taxa, 1 / 12) - 1;
   }
 
-  if (tipoPeriodo.value === 'anos') {
-    periodo *= 12;
+  if (tipoPeriodoSelect.value === "anos") {
+    periodo = periodo * 12;
   }
 
+  // === CÁLCULO ===
   let saldo = valorInicial;
   let investido = valorInicial;
 
-  tabelaEvolucao.innerHTML = '';
+  tabela.innerHTML = "";
 
   const labels = [];
   const dados = [];
@@ -316,7 +51,7 @@ function calcular() {
     labels.push(`Mês ${i}`);
     dados.push(saldo.toFixed(2));
 
-    tabelaEvolucao.innerHTML += `
+    tabela.innerHTML += `
       <tr>
         <td>${i}</td>
         <td>R$ ${investido.toFixed(2)}</td>
@@ -328,33 +63,38 @@ function calcular() {
     if (saldo === 0) break;
   }
 
-  montanteFinal.innerText = saldo.toFixed(2);
+  montanteFinalSpan.innerText = saldo.toFixed(2).replace(".", ",");
+
   desenharGrafico(labels, dados);
 }
 
 function desenharGrafico(labels, dados) {
-  const ctx = document.getElementById('graficoSaldo');
+  const ctx = document.getElementById("graficoSaldo");
 
   if (grafico) grafico.destroy();
 
   grafico = new Chart(ctx, {
-    type: 'line',
+    type: "line",
     data: {
       labels,
       datasets: [{
+        label: "Saldo acumulado",
         data: dados,
-        borderColor: '#2563eb',
-        backgroundColor: 'rgba(37,99,235,0.15)',
+        borderColor: "#2563eb",
+        backgroundColor: "rgba(37,99,235,0.15)",
         fill: true,
         tension: 0.3
       }]
     },
     options: {
-      plugins: { legend: { display: false } },
+      responsive: true,
+      plugins: {
+        legend: { display: false }
+      },
       scales: {
         y: {
           ticks: {
-            callback: v => 'R$ ' + v
+            callback: v => "R$ " + v
           }
         }
       }
@@ -362,6 +102,3 @@ function desenharGrafico(labels, dados) {
   });
 }
 </script>
-
-</body>
-</html>
