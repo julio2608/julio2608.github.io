@@ -14,70 +14,33 @@
 </head>
 <body>
 
-<header class="topo">
-  <h1>Simulação de Alíquota Efetiva</h1>
-  <p>Calculadora de IRRF – Lei 15.191/2025</p>
-  <span class="autor">Desenvolvido por Julio Cesar</span>
-</header>
+<!-- TOPO SIMPLES -->
+<div class="topo">
+  <h1>Calculadora de IRRF</h1>
+  <p>Lei 15.191/2025</p>
+  <span class="autor">Julio Cesar</span>
+</div>
 
-<main class="container">
+<!-- CONTEÚDO -->
+<div class="container">
 
-  <!-- ===== 1. Rendimentos ===== -->
-  <section class="card">
-    <div class="card-header">
-      <span class="numero">1</span>
-      <h2>Rendimentos Tributáveis</h2>
+  <!-- ENTRADAS -->
+  <div class="card">
+    <label>Salário Bruto (R$)</label>
+    <input type="number" id="salario" step="0.01" placeholder="Ex: 6000">
+
+    <label>Dedução Legal / INSS (R$)</label>
+    <input type="number" id="inss" step="0.01" placeholder="Ex: 649.60">
+
+    <div class="acoes">
+      <button onclick="calcular()">Calcular</button>
     </div>
-
-    <div class="card-body">
-      <label>Salário Bruto (R$)</label>
-      <input type="number" id="salario" step="0.01" placeholder="Ex: 6000">
-
-      <p class="ajuda">
-        Não incluir parcelas isentas (aposentadoria acima de 65 anos, pensão isenta etc).
-      </p>
-    </div>
-  </section>
-
-  <!-- ===== 2. Deduções ===== -->
-  <section class="card">
-    <div class="card-header">
-      <span class="numero">2</span>
-      <h2>Deduções Legais</h2>
-    </div>
-
-    <div class="card-body">
-      <label>Dedução Legal / INSS (R$)</label>
-      <input type="number" id="inss" step="0.01" placeholder="Ex: 649.60">
-    </div>
-  </section>
-
-  <!-- ===== Botão ===== -->
-  <div class="acoes">
-    <button onclick="calcular()">Calcular</button>
   </div>
 
-  <!-- ===== ANÚNCIO (somente após aprovação) ===== -->
-  <!--
-  <ins class="adsbygoogle"
-       style="display:block; text-align:center; margin:20px 0;"
-       data-ad-client="ca-pub-8761354600886029"
-       data-ad-slot="XXXXXXXXXX"
-       data-ad-format="auto"></ins>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-  -->
+  <!-- RESULTADOS -->
+  <div class="card">
 
-  <!-- ===== 3. Detalhamento ===== -->
-  <section class="card">
-    <div class="card-header">
-      <span class="numero">3</span>
-      <h2>Detalhamento do Cálculo</h2>
-    </div>
-
-    <div class="card-body grid">
-
+    <div class="grid">
       <div class="label">Tipo de Dedução</div>
       <div class="value" id="tipoDeducao"></div>
 
@@ -104,7 +67,6 @@
 
       <div class="label">Redução Aplicada</div>
       <div class="value">R$ <span id="reducao"></span></div>
-
     </div>
 
     <div class="resultado-final">
@@ -112,12 +74,12 @@
     </div>
 
     <p class="aviso">
-      * Simulação com finalidade educativa. Para efeitos legais,
-      consulte a Receita Federal do Brasil ou um profissional habilitado.
+      Simulação com finalidade educativa.
+      Consulte a Receita Federal ou um profissional habilitado.
     </p>
-  </section>
 
-</main>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>
