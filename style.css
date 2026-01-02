@@ -1,4 +1,4 @@
-/* Reset básico */
+/* RESET */
 * {
   box-sizing: border-box;
   font-family: 'Segoe UI', Roboto, Arial, sans-serif;
@@ -6,50 +6,104 @@
 
 body {
   margin: 0;
-  padding: 0;
-  background: linear-gradient(135deg, #f2f5f9, #e6ebf2);
-  color: #2c2c2c;
-}
-
-/* Título */
-h1 {
-  text-align: center;
-  margin-top: 30px;
-  font-size: 2rem;
+  background: #f4f6f9;
   color: #1f2937;
 }
 
-.autor {
+/* =========================
+   TOPO
+========================= */
+.topo {
+  background: #0b4ea2;
+  color: #ffffff;
+  padding: 18px 15px;
   text-align: center;
-  color: #6b7280;
-  margin-bottom: 30px;
 }
 
-/* Caixa principal */
-.box {
-  max-width: 720px;
-  background: #ffffff;
+.topo h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.topo p {
+  margin: 4px 0;
+  font-size: 0.9rem;
+}
+
+.autor {
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+.container {
+  max-width: 760px;
   margin: 20px auto;
-  padding: 25px 30px;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  padding: 0 12px;
 }
 
-/* Inputs */
+/* =========================
+   CARDS
+========================= */
+.card {
+  background: #ffffff;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.numero {
+  background: #0b4ea2;
+  color: #ffffff;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.card-header h2 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1e3a8a;
+}
+
+.card-body {
+  padding: 14px;
+}
+
+/* =========================
+   INPUTS
+========================= */
 label {
   display: block;
-  margin-top: 15px;
+  font-size: 0.85rem;
   font-weight: 600;
-  color: #374151;
+  margin-bottom: 4px;
 }
 
 input[type="number"] {
   width: 100%;
-  margin-top: 6px;
-  padding: 12px;
-  border-radius: 8px;
+  padding: 9px 10px;
+  border-radius: 6px;
   border: 1px solid #d1d5db;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 input:focus {
@@ -57,73 +111,86 @@ input:focus {
   border-color: #2563eb;
 }
 
-/* Botão */
+.ajuda {
+  margin-top: 6px;
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+/* =========================
+   BOTÕES
+========================= */
+.acoes {
+  display: flex;
+  justify-content: center;
+  margin: 16px 0;
+}
+
 button {
-  width: 100%;
-  margin-top: 25px;
-  padding: 14px;
   background: #2563eb;
   color: #ffffff;
   border: none;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  font-weight: bold;
+  padding: 10px 26px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background 0.2s;
 }
 
 button:hover {
   background: #1d4ed8;
 }
 
-/* Detalhamento */
-h2 {
-  margin-top: 0;
-  text-align: center;
-  color: #111827;
-}
-
-/* Grid de resultados */
+/* =========================
+   GRID DE RESULTADOS
+========================= */
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  row-gap: 12px;
+  row-gap: 10px;
   column-gap: 10px;
-  margin-top: 20px;
 }
 
 .label {
+  font-size: 0.85rem;
   font-weight: 600;
   color: #374151;
 }
 
 .value {
+  font-size: 0.85rem;
   text-align: right;
   color: #111827;
 }
 
-/* Resultado final */
+/* =========================
+   RESULTADO FINAL
+========================= */
 .resultado-final {
-  margin-top: 25px;
-  padding: 18px;
+  margin: 14px;
+  padding: 12px;
   background: #ecfdf5;
   border: 1px solid #10b981;
-  border-radius: 10px;
+  border-radius: 8px;
   text-align: center;
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 1.15rem;
+  font-weight: 700;
   color: #065f46;
 }
 
-/* Aviso */
+/* =========================
+   AVISO
+========================= */
 .aviso {
-  margin-top: 20px;
-  font-size: 0.9rem;
+  margin: 12px 14px 18px;
+  font-size: 0.75rem;
   color: #6b7280;
   text-align: center;
 }
 
-/* Responsivo */
+/* =========================
+   RESPONSIVO
+========================= */
 @media (max-width: 600px) {
   .grid {
     grid-template-columns: 1fr;
