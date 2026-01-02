@@ -1,34 +1,111 @@
 body {
-  font-family: Arial, sans-serif;
-  background: #f4f6f8;
-  padding: 20px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f3f5f7;
+  padding: 30px;
+  color: #333;
 }
 
 h1 {
   text-align: center;
+  margin-bottom: 4px;
+}
+
+.autor {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 30px;
 }
 
 .box {
-  background: white;
-  padding: 20px;
+  background: #ffffff;
+  padding: 25px;
   margin: 20px auto;
-  max-width: 600px;
-  border-radius: 6px;
+  max-width: 700px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 label {
   display: block;
-  margin-top: 10px;
+  margin-top: 14px;
+  font-weight: 600;
 }
 
 input {
   width: 100%;
-  padding: 6px;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 15px;
 }
 
 button {
-  margin-top: 15px;
-  padding: 10px;
+  margin-top: 20px;
+  padding: 12px;
   width: 100%;
+  background: #0066cc;
+  color: white;
+  border: none;
   cursor: pointer;
+  font-size: 17px;
+  border-radius: 6px;
+}
+
+button:hover {
+  background: #004f99;
+}
+
+/* ===== DETALHAMENTO ===== */
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 20px;
+  margin-top: 15px;
+}
+
+.label {
+  font-weight: 600;
+  color: #444;
+}
+
+.value {
+  text-align: right;
+  color: #111;
+}
+
+/* ===== RESULTADO FINAL ===== */
+
+.resultado-final {
+  margin-top: 25px;
+  padding: 15px;
+  background: linear-gradient(135deg, #e6f0ff, #f4f8ff);
+  border-radius: 8px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: #003d99;
+}
+
+/* ===== AVISO ===== */
+
+.aviso {
+  font-size: 12px;
+  color: #777;
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .value {
+    text-align: left;
+  }
 }
