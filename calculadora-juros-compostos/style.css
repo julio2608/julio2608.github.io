@@ -9,7 +9,7 @@ body {
   color: #1f2937;
 }
 
-/* Barra superior */
+/* Topbar */
 .topbar {
   background: #ffffff;
   border-bottom: 1px solid #e5e7eb;
@@ -17,21 +17,17 @@ body {
 }
 
 .btn-home {
+  text-decoration: none;
   color: #2563eb;
   font-weight: 600;
-  text-decoration: none;
-}
-
-.btn-home:hover {
-  text-decoration: underline;
 }
 
 /* Topo */
 .topo {
   background: #0b4ea2;
-  color: #ffffff;
-  padding: 20px;
+  color: #fff;
   text-align: center;
+  padding: 20px;
 }
 
 .topo h1 {
@@ -40,54 +36,68 @@ body {
 }
 
 .topo p {
-  margin: 4px 0;
+  margin: 6px 0;
   font-size: 0.9rem;
 }
 
 .autor {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   opacity: 0.85;
 }
 
-/* Conteúdo */
+/* Container */
 .container {
-  max-width: 760px;
+  max-width: 900px;
   margin: 20px auto;
-  padding: 0 12px;
+  padding: 0 15px;
 }
 
+/* Cards */
 .card {
   background: #ffffff;
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
 }
 
-/* Inputs */
+/* Form */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
 label {
   font-size: 0.85rem;
   font-weight: 600;
 }
 
-input {
+input, select {
   width: 100%;
   padding: 9px;
-  margin-bottom: 12px;
+  margin-top: 4px;
   border-radius: 6px;
   border: 1px solid #d1d5db;
+  font-size: 0.9rem;
+}
+
+.inline {
+  display: flex;
+  gap: 6px;
 }
 
 /* Botão */
 .acoes {
   text-align: center;
+  margin-top: 15px;
 }
 
 button {
   background: #2563eb;
-  color: #ffffff;
+  color: #fff;
   border: none;
-  padding: 10px 30px;
+  padding: 10px 28px;
   border-radius: 6px;
   font-weight: 600;
   cursor: pointer;
@@ -97,39 +107,47 @@ button:hover {
   background: #1d4ed8;
 }
 
-/* Resultados */
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  font-size: 0.85rem;
+/* Resultado */
+.resultado h2 {
+  margin-top: 0;
 }
 
-.value {
-  text-align: right;
-}
-
-.resultado-final {
-  margin-top: 14px;
-  padding: 12px;
-  background: #ecfdf5;
-  border: 1px solid #10b981;
-  border-radius: 8px;
-  text-align: center;
-  font-size: 1.15rem;
-  font-weight: 700;
+.total {
+  font-size: 1.2rem;
+  font-weight: bold;
   color: #065f46;
 }
 
-.aviso {
-  font-size: 0.75rem;
-  color: #6b7280;
-  text-align: center;
-  margin-top: 10px;
+.total-investido,
+.ganho {
+  font-size: 0.9rem;
 }
 
-@media (max-width: 600px) {
-  .grid {
+/* Tabela */
+.tabela-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+th, td {
+  padding: 8px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: right;
+}
+
+th:first-child,
+td:first-child {
+  text-align: center;
+}
+
+/* Responsivo */
+@media (max-width: 700px) {
+  .form-grid {
     grid-template-columns: 1fr;
   }
 }
