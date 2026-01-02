@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Calculadora IRRF 2026 – Lei 15.191/2025</title>
+  <title>Calculadora IRRF – Lei 15.191/2025</title>
 
   <!-- Google AdSense -->
   <script async
@@ -14,44 +14,40 @@
 </head>
 <body>
 
-<!-- NAVBAR / BREADCRUMB -->
-<div class="navbar">
-  <div class="nav-container">
-    <div class="logo">Simuladores</div>
-
-    <div class="breadcrumb">
-      <a href="/">Início</a>
-      <span>›</span>
-      <span>Calculadora IRRF</span>
-    </div>
+<!-- 🔹 BREADCRUMB (OPÇÃO 1) -->
+<nav class="breadcrumb-bar">
+  <div class="breadcrumb-container">
+    <a href="/" class="breadcrumb-link">Início</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">Calculadora IRRF</span>
   </div>
-</div>
+</nav>
 
-<!-- TOPO -->
-<div class="topo">
-  <h1>Calculadora de IRRF 2026</h1>
+<!-- 🔹 TOPO -->
+<header class="topo">
+  <h1>Calculadora de IRRF</h1>
   <p>Lei 15.191/2025</p>
   <span class="autor">Julio Cesar</span>
-</div>
+</header>
 
-<!-- CONTEÚDO -->
-<div class="container">
+<!-- 🔹 CONTEÚDO -->
+<main class="container">
 
   <!-- ENTRADAS -->
-  <div class="card">
+  <section class="card">
     <label>Salário Bruto (R$)</label>
     <input type="number" id="salario" step="0.01" placeholder="Ex: 6000,00">
 
     <label>Dedução Legal / INSS (R$)</label>
-    <input type="number" id="inss" step="0.01" placeholder="Ex: 649.60">
+    <input type="number" id="inss" step="0.01" placeholder="Ex: 649,60">
 
     <div class="acoes">
       <button onclick="calcular()">Calcular</button>
     </div>
-  </div>
+  </section>
 
   <!-- RESULTADOS -->
-  <div class="card">
+  <section class="card">
 
     <div class="grid">
       <div class="label">Tipo de Dedução</div>
@@ -91,12 +87,12 @@
       Consulte a Receita Federal ou um profissional habilitado.
     </p>
 
-  </div>
-</div>
+  </section>
+</main>
+
+<!-- 🔹 BOTÃO FLUTUANTE (OPÇÃO 2) -->
+<a href="/" class="btn-float-home" title="Voltar ao início">🏠</a>
 
 <script src="script.js"></script>
 </body>
 </html>
-
-
-
