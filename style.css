@@ -1,105 +1,129 @@
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: #f3f5f7;
-  padding: 30px;
-  color: #333;
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #f2f5f9, #e6ebf2);
+  color: #2c2c2c;
+}
+
+/* Título */
 h1 {
   text-align: center;
-  margin-bottom: 4px;
+  margin-top: 30px;
+  font-size: 2rem;
+  color: #1f2937;
 }
 
 .autor {
   text-align: center;
-  font-size: 14px;
-  color: #666;
+  color: #6b7280;
   margin-bottom: 30px;
 }
 
+/* Caixa principal */
 .box {
+  max-width: 720px;
   background: #ffffff;
-  padding: 25px;
   margin: 20px auto;
-  max-width: 700px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
+/* Inputs */
 label {
   display: block;
-  margin-top: 14px;
+  margin-top: 15px;
   font-weight: 600;
+  color: #374151;
 }
 
-input {
+input[type="number"] {
   width: 100%;
-  padding: 10px;
   margin-top: 6px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 1rem;
 }
 
+input:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+/* Botão */
 button {
-  margin-top: 20px;
-  padding: 12px;
   width: 100%;
-  background: #0066cc;
-  color: white;
+  margin-top: 25px;
+  padding: 14px;
+  background: #2563eb;
+  color: #ffffff;
   border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
   cursor: pointer;
-  font-size: 17px;
-  border-radius: 6px;
+  transition: background 0.2s;
 }
 
 button:hover {
-  background: #004f99;
+  background: #1d4ed8;
 }
 
-/* ===== DETALHAMENTO ===== */
+/* Detalhamento */
+h2 {
+  margin-top: 0;
+  text-align: center;
+  color: #111827;
+}
 
+/* Grid de resultados */
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px 20px;
-  margin-top: 15px;
+  row-gap: 12px;
+  column-gap: 10px;
+  margin-top: 20px;
 }
 
 .label {
   font-weight: 600;
-  color: #444;
+  color: #374151;
 }
 
 .value {
   text-align: right;
-  color: #111;
+  color: #111827;
 }
 
-/* ===== RESULTADO FINAL ===== */
-
+/* Resultado final */
 .resultado-final {
   margin-top: 25px;
-  padding: 15px;
-  background: linear-gradient(135deg, #e6f0ff, #f4f8ff);
-  border-radius: 8px;
+  padding: 18px;
+  background: #ecfdf5;
+  border: 1px solid #10b981;
+  border-radius: 10px;
   text-align: center;
-  font-size: 22px;
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #003d99;
+  color: #065f46;
 }
 
-/* ===== AVISO ===== */
-
+/* Aviso */
 .aviso {
-  font-size: 12px;
-  color: #777;
   margin-top: 20px;
+  font-size: 0.9rem;
+  color: #6b7280;
   text-align: center;
 }
 
-/* ===== MOBILE ===== */
-
+/* Responsivo */
 @media (max-width: 600px) {
   .grid {
     grid-template-columns: 1fr;
