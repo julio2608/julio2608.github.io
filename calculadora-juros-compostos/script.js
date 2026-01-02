@@ -1,55 +1,75 @@
+<script>
 let grafico = null;
 
 function calcular() {
-  // === ENTRADAS ===
-  const valorInicial = parseFloat(document.getElementById("valorInicial").value) || 0;
-  const aporte = parseFloat(document.getElementById("aporte").value) || 0;
-  const retirada = parseFloat(document.getElementById("retirada").value) || 0;
-  const taxa = parseFloat(document.getElementById("taxa").value) || 0;
-  const tipoTaxa = document.getElementById("tipoTaxa").value;
-  const periodo = parseInt(document.getElementById("periodo").value) || 0;
-  const tipoPeriodo = document.getElementById("tipoPeriodo").value;
+  // === PEGAR ELEMENTOS ===
+  const valorInicialInput = document.getElementById("valorInicial");
+  const aporteInput = document.getElementById("aporte");
+  const retiradaInput = document.getElementById("retirada");
+  const taxaInput = document.getElementById("taxa");
+  const tipoTaxaSelect = document.getElementById("tipoTaxa");
+  const periodoInput = document.getElementById("periodo");
+  const tipoPeriodoSelect = document.getElementById("tipoPeriodo");
+  const tabela = document.getElementById("tabelaEvolucao");
+  const montanteFinalSpan = document.getElementById("montanteFinal");
+
+  // === VALORES ===
+  const valorInicial = Number(valorInicialInput.value) || 0;
+  const aporte = Number(aporteInput.value) || 0;
+  const retirada = Number(retiradaInput.value) || 0;
+  let taxa = Number(taxaInput.value) / 100;
+  let periodo = Number(periodoInput.value) || 0;
 
   // === CONVERSÕES ===
-  let taxaPeriodo = taxa / 100;
-  let totalPeriodos = periodo;
-
-  if (tipoTaxa === "anual") {
-    taxaPeriodo = Math.pow(1 + taxa / 100, 1 / 12) - 1;
+  if (tipoTaxaSelect.value === "anual") {
+    taxa = Math.pow(1 + taxa, 1 / 12) - 1;
   }
 
-  if (tipoPeriodo === "anos") {
-    totalPeriodos = periodo * 12;
+  if (tipoPeriodoSelect.value === "anos") {
+    periodo = periodo * 12;
   }
 
   // === CÁLCULO ===
   let saldo = valorInicial;
-  let labels = [];
-  let valores = [];
+  let investido = valorInicial;
 
-  const tabela = document.getElementById("tabelaEvolucao");
   tabela.innerHTML = "";
 
-  for (let i = 1; i <= totalPeriodos; i++) {
-    saldo = saldo * (1 + taxaPeriodo) + aporte - retirada;
+  const labels = [];
+  const dados = [];
 
-    labels.push(i);
-    valores.push(saldo);
+  for (let i = 1; i <= periodo; i++) {
+    saldo += aporte;
+    investido += aporte;
 
-    const linha = document.createElement("tr");
-    linha.innerHTML = `
-      <td>${i}</td>
-      <td>R$ ${saldo.toFixed(2)}</td>
+    const juros = saldo * taxa;
+    saldo += juros;
+
+    saldo -= retirada;
+    if (saldo < 0) saldo = 0;
+
+    labels.push(`Mês ${i}`);
+    dados.push(saldo.toFixed(2));
+
+    tabela.innerHTML += `
+      <tr>
+        <td>${i}</td>
+        <td>R$ ${investido.toFixed(2)}</td>
+        <td>R$ ${juros.toFixed(2)}</td>
+        <td>R$ ${saldo.toFixed(2)}</td>
+      </tr>
     `;
-    tabela.appendChild(linha);
+
+    if (saldo === 0) break;
   }
 
-  // === RESULTADO FINAL ===
-  document.getElementById("montanteFinal").innerText =
-    saldo.toFixed(2).replace(".", ",");
+  montanteFinalSpan.innerText = saldo.toFixed(2).replace(".", ",");
 
-  // === GRÁFICO ===
-  const ctx = document.getElementById("graficoSaldo").getContext("2d");
+  desenharGrafico(labels, dados);
+}
+
+function desenharGrafico(labels, dados) {
+  const ctx = document.getElementById("graficoSaldo");
 
   if (grafico) grafico.destroy();
 
@@ -58,10 +78,10 @@ function calcular() {
     data: {
       labels,
       datasets: [{
-        label: "Evolução do saldo",
-        data: valores,
+        label: "Saldo acumulado",
+        data: dados,
         borderColor: "#2563eb",
-        backgroundColor: "rgba(37,99,235,0.1)",
+        backgroundColor: "rgba(37,99,235,0.15)",
         fill: true,
         tension: 0.3
       }]
@@ -70,7 +90,15 @@ function calcular() {
       responsive: true,
       plugins: {
         legend: { display: false }
+      },
+      scales: {
+        y: {
+          ticks: {
+            callback: v => "R$ " + v
+          }
+        }
       }
     }
   });
 }
+</script>
