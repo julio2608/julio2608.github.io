@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora de Juros Compostos Online</title>
+
+  <meta name="description" content="Calculadora de juros compostos online. Simule investimentos com aporte inicial, taxa de juros e tempo. Gratuito e fácil.">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Barra superior -->
+<div class="topbar">
+  <a href="/" class="btn-home">← Início</a>
+</div>
+
+<!-- Topo -->
+<div class="topo">
+  <h1>Calculadora de Juros Compostos</h1>
+  <p>Simulação de investimentos</p>
+  <span class="autor">Julio Cesar</span>
+</div>
+
+<div class="container">
+
+  <!-- Entradas -->
+  <div class="card">
+    <label>Capital Inicial (R$)</label>
+    <input type="number" id="capital" placeholder="Ex: 1000">
+
+    <label>Taxa de Juros (% ao mês)</label>
+    <input type="number" id="taxa" step="0.01" placeholder="Ex: 1.5">
+
+    <label>Tempo (meses)</label>
+    <input type="number" id="tempo" placeholder="Ex: 12">
+
+    <div class="acoes">
+      <button onclick="calcular()">Calcular</button>
+    </div>
+  </div>
+
+  <!-- Resultado -->
+  <div class="card">
+
+    <div class="grid">
+      <div class="label">Capital Inicial</div>
+      <div class="value">R$ <span id="capitalOut"></span></div>
+
+      <div class="label">Taxa de Juros</div>
+      <div class="value"><span id="taxaOut"></span>%</div>
+
+      <div class="label">Tempo</div>
+      <div class="value"><span id="tempoOut"></span> meses</div>
+
+      <div class="label">Montante Final</div>
+      <div class="value">R$ <span id="montante"></span></div>
+
+      <div class="label">Juros Ganhos</div>
+      <div class="value">R$ <span id="juros"></span></div>
+    </div>
+
+    <div class="resultado-final">
+      Valor Final: R$ <span id="resultadoFinal"></span>
+    </div>
+
+    <p class="aviso">
+      Simulação educativa. Não constitui recomendação financeira.
+    </p>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
