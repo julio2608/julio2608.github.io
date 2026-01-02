@@ -2,38 +2,35 @@
 let grafico = null;
 
 function calcular() {
-  // === PEGAR ELEMENTOS ===
-  const valorInicialInput = document.getElementById("valorInicial");
-  const aporteInput = document.getElementById("aporte");
-  const retiradaInput = document.getElementById("retirada");
-  const taxaInput = document.getElementById("taxa");
-  const tipoTaxaSelect = document.getElementById("tipoTaxa");
-  const periodoInput = document.getElementById("periodo");
-  const tipoPeriodoSelect = document.getElementById("tipoPeriodo");
-  const tabela = document.getElementById("tabelaEvolucao");
-  const montanteFinalSpan = document.getElementById("montanteFinal");
+  // === ELEMENTOS (nomes SEM conflito com IDs) ===
+  const valorInicialEl = document.getElementById("valorInicial");
+  const aporteEl = document.getElementById("aporte");
+  const retiradaEl = document.getElementById("retirada");
+  const taxaEl = document.getElementById("taxa");
+  const tipoTaxaEl = document.getElementById("tipoTaxa");
+  const periodoEl = document.getElementById("periodo");
+  const tipoPeriodoEl = document.getElementById("tipoPeriodo");
+  const tabelaEl = document.getElementById("tabelaEvolucao");
+  const montanteFinalEl = document.getElementById("montanteFinal");
 
   // === VALORES ===
-  const valorInicial = Number(valorInicialInput.value) || 0;
-  const aporte = Number(aporteInput.value) || 0;
-  const retirada = Number(retiradaInput.value) || 0;
-  let taxa = Number(taxaInput.value) / 100;
-  let periodo = Number(periodoInput.value) || 0;
+  let saldo = Number(valorInicialEl.value) || 0;
+  let investido = saldo;
+  const aporte = Number(aporteEl.value) || 0;
+  const retirada = Number(retiradaEl.value) || 0;
+  let taxa = (Number(taxaEl.value) || 0) / 100;
+  let periodo = Number(periodoEl.value) || 0;
 
   // === CONVERSÕES ===
-  if (tipoTaxaSelect.value === "anual") {
+  if (tipoTaxaEl.value === "anual") {
     taxa = Math.pow(1 + taxa, 1 / 12) - 1;
   }
 
-  if (tipoPeriodoSelect.value === "anos") {
+  if (tipoPeriodoEl.value === "anos") {
     periodo = periodo * 12;
   }
 
-  // === CÁLCULO ===
-  let saldo = valorInicial;
-  let investido = valorInicial;
-
-  tabela.innerHTML = "";
+  tabelaEl.innerHTML = "";
 
   const labels = [];
   const dados = [];
@@ -51,7 +48,7 @@ function calcular() {
     labels.push(`Mês ${i}`);
     dados.push(saldo.toFixed(2));
 
-    tabela.innerHTML += `
+    tabelaEl.innerHTML += `
       <tr>
         <td>${i}</td>
         <td>R$ ${investido.toFixed(2)}</td>
@@ -63,7 +60,7 @@ function calcular() {
     if (saldo === 0) break;
   }
 
-  montanteFinalSpan.innerText = saldo.toFixed(2).replace(".", ",");
+  montanteFinalEl.innerText = saldo.toFixed(2).replace(".", ",");
 
   desenharGrafico(labels, dados);
 }
@@ -88,9 +85,7 @@ function desenharGrafico(labels, dados) {
     },
     options: {
       responsive: true,
-      plugins: {
-        legend: { display: false }
-      },
+      plugins: { legend: { display: false } },
       scales: {
         y: {
           ticks: {
