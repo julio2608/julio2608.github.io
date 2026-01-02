@@ -2,74 +2,95 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Calculadora de Juros Compostos Online</title>
-
-  <meta name="description" content="Calculadora de juros compostos online. Simule investimentos com aporte inicial, taxa de juros e tempo. Gratuito e fácil.">
+  <title>Calculadora de Juros Compostos</title>
 
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- Barra superior -->
+<!-- TOPO -->
 <div class="topbar">
   <a href="/" class="btn-home">← Início</a>
 </div>
 
-<!-- Topo -->
-<div class="topo">
+<header class="topo">
   <h1>Calculadora de Juros Compostos</h1>
-  <p>Simulação de investimentos</p>
+  <p>Simulação de investimentos com evolução no tempo</p>
   <span class="autor">Julio Cesar</span>
-</div>
+</header>
 
-<div class="container">
+<main class="container">
 
-  <!-- Entradas -->
+  <!-- FORMULÁRIO -->
   <div class="card">
-    <label>Capital Inicial (R$)</label>
-    <input type="number" id="capital" placeholder="Ex: 1000">
+    <div class="form-grid">
 
-    <label>Taxa de Juros (% ao mês)</label>
-    <input type="number" id="taxa" step="0.01" placeholder="Ex: 1.5">
+      <div>
+        <label>Valor inicial (R$)</label>
+        <input type="number" id="valorInicial" step="0.01" placeholder="Ex: 1000">
+      </div>
 
-    <label>Tempo (meses)</label>
-    <input type="number" id="tempo" placeholder="Ex: 12">
+      <div>
+        <label>Aporte mensal (R$)</label>
+        <input type="number" id="aporte" step="0.01" placeholder="Ex: 300">
+      </div>
+
+      <div>
+        <label>Taxa de juros (%)</label>
+        <div class="inline">
+          <input type="number" id="taxa" step="0.01" placeholder="Ex: 1">
+          <select id="tipoTaxa">
+            <option value="mensal">Mensal</option>
+            <option value="anual">Anual</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label>Período</label>
+        <div class="inline">
+          <input type="number" id="periodo" placeholder="Ex: 12">
+          <select id="tipoPeriodo">
+            <option value="meses">Meses</option>
+            <option value="anos">Anos</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
 
     <div class="acoes">
       <button onclick="calcular()">Calcular</button>
     </div>
   </div>
 
-  <!-- Resultado -->
-  <div class="card">
-
-    <div class="grid">
-      <div class="label">Capital Inicial</div>
-      <div class="value">R$ <span id="capitalOut"></span></div>
-
-      <div class="label">Taxa de Juros</div>
-      <div class="value"><span id="taxaOut"></span>%</div>
-
-      <div class="label">Tempo</div>
-      <div class="value"><span id="tempoOut"></span> meses</div>
-
-      <div class="label">Montante Final</div>
-      <div class="value">R$ <span id="montante"></span></div>
-
-      <div class="label">Juros Ganhos</div>
-      <div class="value">R$ <span id="juros"></span></div>
-    </div>
-
-    <div class="resultado-final">
-      Valor Final: R$ <span id="resultadoFinal"></span>
-    </div>
-
-    <p class="aviso">
-      Simulação educativa. Não constitui recomendação financeira.
-    </p>
-
+  <!-- RESULTADO -->
+  <div class="card resultado">
+    <h2>Resultado Final</h2>
+    <p class="total">Montante: R$ <span id="montanteFinal">0,00</span></p>
+    <p class="total-investido">Total investido: R$ <span id="totalInvestido">0,00</span></p>
+    <p class="ganho">Rendimento: R$ <span id="rendimento">0,00</span></p>
   </div>
-</div>
+
+  <!-- TABELA -->
+  <div class="card">
+    <h2>Evolução do Investimento</h2>
+    <div class="tabela-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Mês</th>
+            <th>Investido (R$)</th>
+            <th>Juros (R$)</th>
+            <th>Saldo (R$)</th>
+          </tr>
+        </thead>
+        <tbody id="tabelaEvolucao"></tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
 
 <script src="script.js"></script>
 </body>
