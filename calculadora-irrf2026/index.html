@@ -14,40 +14,44 @@
 </head>
 <body>
 
-<!-- 🔹 BREADCRUMB (OPÇÃO 1) -->
-<nav class="breadcrumb-bar">
-  <div class="breadcrumb-container">
-    <a href="/" class="breadcrumb-link">Início</a>
-    <span class="breadcrumb-sep">›</span>
-    <span class="breadcrumb-current">Calculadora IRRF</span>
-  </div>
-</nav>
+<!-- NAVBAR / BREADCRUMB -->
+<div class="navbar">
+  <div class="nav-container">
+    <div class="logo">Simuladores</div>
 
-<!-- 🔹 TOPO -->
-<header class="topo">
+    <div class="breadcrumb">
+      <a href="/">Início</a>
+      <span>›</span>
+      <span>Calculadora IRRF</span>
+    </div>
+  </div>
+</div>
+
+<!-- TOPO -->
+<div class="topo">
   <h1>Calculadora de IRRF</h1>
   <p>Lei 15.191/2025</p>
   <span class="autor">Julio Cesar</span>
-</header>
+</div>
 
-<!-- 🔹 CONTEÚDO -->
-<main class="container">
+<!-- CONTEÚDO -->
+<div class="container">
 
   <!-- ENTRADAS -->
-  <section class="card">
+  <div class="card">
     <label>Salário Bruto (R$)</label>
-    <input type="number" id="salario" step="0.01" placeholder="Ex: 6000,00">
+    <input type="number" id="salario" step="0.01" placeholder="Ex: 6000">
 
     <label>Dedução Legal / INSS (R$)</label>
-    <input type="number" id="inss" step="0.01" placeholder="Ex: 649,60">
+    <input type="number" id="inss" step="0.01" placeholder="Ex: 649.60">
 
     <div class="acoes">
       <button onclick="calcular()">Calcular</button>
     </div>
-  </section>
+  </div>
 
   <!-- RESULTADOS -->
-  <section class="card">
+  <div class="card">
 
     <div class="grid">
       <div class="label">Tipo de Dedução</div>
@@ -87,11 +91,8 @@
       Consulte a Receita Federal ou um profissional habilitado.
     </p>
 
-  </section>
-</main>
-
-<!-- 🔹 BOTÃO FLUTUANTE (OPÇÃO 2) -->
-<a href="/" class="btn-float-home" title="Voltar ao início">🏠</a>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>
