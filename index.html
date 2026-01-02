@@ -2,40 +2,83 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+
   <title>Calculadora IRRF – Lei 15.191/2025</title>
+
+  <!-- Google AdSense -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+    data-ad-client="ca-pub-8761354600886029"
+    crossorigin="anonymous"></script>
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <h1>Calculadora de IRRF – Lei 15.191/2025</h1>
+<p class="autor">Desenvolvido por Julio Cesar</p>
 
 <div class="box">
   <label>Salário Bruto (R$)</label>
-  <input type="number" id="salario" step="0.01">
+  <input type="number" id="salario" step="0.01" placeholder="Ex: 6000">
 
   <label>Dedução Legal / INSS (R$)</label>
-  <input type="number" id="inss" step="0.01">
+  <input type="number" id="inss" step="0.01" placeholder="Ex: 649.60">
 
   <button onclick="calcular()">Calcular</button>
 </div>
 
+<!-- ESPAÇO IDEAL PARA ANÚNCIO (futuro, após aprovação)
+<ins class="adsbygoogle"
+     style="display:block; text-align:center; margin:20px 0;"
+     data-ad-client="ca-pub-8761354600886029"
+     data-ad-slot="XXXXXXXXXX"
+     data-ad-format="auto"></ins>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+-->
+
 <div class="box">
   <h2>Detalhamento do Cálculo</h2>
 
-  <p><b>Tipo de Dedução:</b> <span id="tipoDeducao"></span></p>
-  <p><b>Dedução Utilizada:</b> R$ <span id="deducaoUsada"></span></p>
-  <p><b>Base de Cálculo:</b> R$ <span id="baseCalc"></span></p>
+  <div class="grid">
+    <div class="label">Tipo de Dedução</div>
+    <div class="value" id="tipoDeducao"></div>
 
-  <p><b>Faixa da Tabela:</b> <span id="faixaTabela"></span></p>
-  <p><b>Alíquota:</b> <span id="aliquota"></span></p>
-  <p><b>Parcela a Deduzir:</b> R$ <span id="parcela"></span></p>
+    <div class="label">Dedução Utilizada</div>
+    <div class="value">R$ <span id="deducaoUsada"></span></div>
 
-  <p><b>IR pela Tabela:</b> R$ <span id="irTabela"></span></p>
+    <div class="label">Base de Cálculo</div>
+    <div class="value">R$ <span id="baseCalc"></span></div>
 
-  <p><b>Faixa de Redução:</b> <span id="faixaReducao"></span></p>
-  <p><b>Redução Aplicada:</b> R$ <span id="reducao"></span></p>
+    <div class="label">Faixa da Tabela</div>
+    <div class="value" id="faixaTabela"></div>
 
-  <h3>IRRF Final: R$ <span id="irFinal"></span></h3>
+    <div class="label">Alíquota</div>
+    <div class="value" id="aliquota"></div>
+
+    <div class="label">Parcela a Deduzir</div>
+    <div class="value">R$ <span id="parcela"></span></div>
+
+    <div class="label">IR pela Tabela</div>
+    <div class="value">R$ <span id="irTabela"></span></div>
+
+    <div class="label">Faixa de Redução</div>
+    <div class="value" id="faixaReducao"></div>
+
+    <div class="label">Redução Aplicada</div>
+    <div class="value">R$ <span id="reducao"></span></div>
+  </div>
+
+  <div class="resultado-final">
+    IRRF Final: R$ <span id="irFinal"></span>
+  </div>
+
+  <p class="aviso">
+    * Esta calculadora possui finalidade educativa. Para efeitos legais,
+    consulte a Receita Federal do Brasil ou um profissional habilitado.
+  </p>
 </div>
 
 <script src="script.js"></script>
