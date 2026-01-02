@@ -1,0 +1,135 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f4f6f9;
+  color: #1f2937;
+}
+
+/* Barra superior */
+.topbar {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 10px 20px;
+}
+
+.btn-home {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn-home:hover {
+  text-decoration: underline;
+}
+
+/* Topo */
+.topo {
+  background: #0b4ea2;
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+}
+
+.topo h1 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.topo p {
+  margin: 4px 0;
+  font-size: 0.9rem;
+}
+
+.autor {
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+/* Conteúdo */
+.container {
+  max-width: 760px;
+  margin: 20px auto;
+  padding: 0 12px;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+/* Inputs */
+label {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  padding: 9px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+}
+
+/* Botão */
+.acoes {
+  text-align: center;
+}
+
+button {
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+/* Resultados */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  font-size: 0.85rem;
+}
+
+.value {
+  text-align: right;
+}
+
+.resultado-final {
+  margin-top: 14px;
+  padding: 12px;
+  background: #ecfdf5;
+  border: 1px solid #10b981;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #065f46;
+}
+
+.aviso {
+  font-size: 0.75rem;
+  color: #6b7280;
+  text-align: center;
+  margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
