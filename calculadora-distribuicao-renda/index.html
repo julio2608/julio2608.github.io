@@ -28,10 +28,9 @@
   <div class="autor">Finalidade educativa</div>
 </div>
 
-<!-- CONTAINER -->
 <div class="container">
 
-  <!-- CARD ENTRADA -->
+  <!-- ENTRADAS -->
   <div class="card">
     <label>Dividendos mensais (R$)</label>
     <input type="number" id="dividendos" value="0">
@@ -43,11 +42,11 @@
     <input type="number" id="irOutros" value="0">
 
     <div class="acoes">
-      <button onclick="calcular()">Calcular</button>
+      <button type="button" onclick="calcular()">Calcular</button>
     </div>
   </div>
 
-  <!-- CARD RESULTADOS -->
+  <!-- RESULTADOS -->
   <div class="card" id="resultado" style="display:none;">
 
     <div class="grid">
@@ -71,7 +70,6 @@
     </div>
 
     <div class="resultado-final" id="impostoMensal"></div>
-
     <div class="aviso" id="liquido"></div>
 
   </div>
@@ -81,10 +79,11 @@
 <script>
 function calcular() {
 
-  const dividendos = Number(document.getElementById("dividendos").value);
-  const outros = Number(document.getElementById("outros").value);
-  const irOutros = Number(document.getElementById("irOutros").value);
+  const dividendos = Number(document.getElementById("dividendos").value) || 0;
+  const outros = Number(document.getElementById("outros").value) || 0;
+  const irOutros = Number(document.getElementById("irOutros").value) || 0;
 
+  // IR mensal sobre dividendos
   let irDivMensal = 0;
   if (dividendos > 50000) {
     irDivMensal = dividendos * 0.10;
@@ -94,6 +93,7 @@ function calcular() {
   const rendaAnual = rendaMensal * 12;
   const irPagoAnual = (irDivMensal + irOutros) * 12;
 
+  // Alíquota mínima anual
   let aliquotaMin = 0;
   if (rendaAnual <= 600000) {
     aliquotaMin = 0;
@@ -110,33 +110,34 @@ function calcular() {
   const impostoMensalReal = impostoMinAnual / 12;
   const liquidoMensal = rendaMensal - impostoMensalReal;
 
+  // Mostrar resultado
   document.getElementById("resultado").style.display = "block";
 
-  document.getElementById("irDiv").innerText =
-    irDivMensal.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+  document.getElementById("irDiv").textContent =
+    irDivMensal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
-  document.getElementById("rendaMensal").innerText =
-    rendaMensal.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+  document.getElementById("rendaMensal").textContent =
+    rendaMensal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
-  document.getElementById("aliquota").innerText =
+  document.getElementById("aliquota").textContent =
     (aliquotaMin * 100).toFixed(2) + "%";
 
-  document.getElementById("impostoMin").innerText =
-    impostoMinAnual.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+  document.getElementById("impostoMin").textContent =
+    impostoMinAnual.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
-  document.getElementById("irPagoAno").innerText =
-    irPagoAnual.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+  document.getElementById("irPagoAno").textContent =
+    irPagoAnual.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
-  document.getElementById("complemento").innerText =
-    complementoAnual.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+  document.getElementById("complemento").textContent =
+    complementoAnual.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
-  document.getElementById("impostoMensal").innerText =
+  document.getElementById("impostoMensal").textContent =
     "Imposto mensal total: " +
-    impostoMensalReal.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+    impostoMensalReal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
-  document.getElementById("liquido").innerText =
+  document.getElementById("liquido").textContent =
     "Valor líquido mensal a receber: " +
-    liquidoMensal.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+    liquidoMensal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 </script>
 
