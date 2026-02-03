@@ -1,5 +1,5 @@
 /* =========================
-   RESET
+   RESET & BASE
 ========================= */
 * {
   box-sizing: border-box;
@@ -8,15 +8,14 @@
 
 body {
   margin: 0;
-  background: #f4f6f9;
+  background: linear-gradient(180deg, #f4f6fb, #eef2f7);
   color: #1f2937;
 }
 
 /* =========================
-   NAVBAR / BREADCRUMB
+   NAVBAR
 ========================= */
 .navbar {
-  width: 100%;
   background: #ffffff;
   border-bottom: 1px solid #e5e7eb;
   position: sticky;
@@ -25,9 +24,9 @@ body {
 }
 
 .nav-container {
-  max-width: 760px;
+  max-width: 820px;
   margin: auto;
-  padding: 10px 12px;
+  padding: 12px 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -36,7 +35,7 @@ body {
 .logo {
   font-size: 0.95rem;
   font-weight: 700;
-  color: #1e3a8a;
+  color: #1e40af;
 }
 
 .breadcrumb {
@@ -53,32 +52,30 @@ body {
   font-weight: 600;
 }
 
-.breadcrumb a:hover {
-  text-decoration: underline;
-}
-
 /* =========================
    TOPO
 ========================= */
 .topo {
-  background: #0b4ea2;
+  background: linear-gradient(135deg, #0b4ea2, #2563eb);
   color: #ffffff;
-  padding: 16px 12px;
+  padding: 22px 14px;
   text-align: center;
 }
 
 .topo h1 {
   margin: 0;
-  font-size: 1.35rem;
+  font-size: 1.5rem;
   font-weight: 600;
 }
 
 .topo p {
-  margin: 4px 0;
-  font-size: 0.85rem;
+  margin: 6px 0 0;
+  font-size: 0.9rem;
+  opacity: 0.95;
 }
 
 .autor {
+  margin-top: 6px;
   font-size: 0.75rem;
   opacity: 0.85;
 }
@@ -87,20 +84,30 @@ body {
    CONTAINER
 ========================= */
 .container {
-  max-width: 760px;
-  margin: 18px auto;
-  padding: 0 12px;
+  max-width: 820px;
+  margin: 22px auto;
+  padding: 0 14px;
 }
 
 /* =========================
-   CARDS
+   CARD
 ========================= */
 .card {
   background: #ffffff;
-  border-radius: 8px;
-  margin-bottom: 14px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
-  padding: 14px;
+  border-radius: 12px;
+  margin-bottom: 18px;
+  padding: 18px;
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.06),
+    0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.card h3 {
+  margin: 0 0 12px;
+  font-size: 1rem;
+  color: #1e3a8a;
+  border-left: 4px solid #2563eb;
+  padding-left: 8px;
 }
 
 /* =========================
@@ -110,21 +117,25 @@ label {
   display: block;
   font-size: 0.85rem;
   font-weight: 600;
+  margin-top: 12px;
   margin-bottom: 4px;
-  margin-top: 10px;
+  color: #374151;
 }
 
 input[type="number"] {
   width: 100%;
-  padding: 8px 10px;
-  border-radius: 6px;
+  padding: 10px 12px;
+  border-radius: 8px;
   border: 1px solid #d1d5db;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  background: #f9fafb;
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 input:focus {
   outline: none;
   border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
 /* =========================
@@ -133,22 +144,24 @@ input:focus {
 .acoes {
   display: flex;
   justify-content: center;
-  margin-top: 14px;
+  margin-top: 18px;
 }
 
 button {
-  background: #2563eb;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
   color: #ffffff;
   border: none;
-  padding: 9px 24px;
-  font-size: 0.9rem;
+  padding: 10px 34px;
+  font-size: 0.95rem;
   font-weight: 600;
-  border-radius: 6px;
+  border-radius: 999px;
   cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
 }
 
 button:hover {
-  background: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.35);
 }
 
 /* =========================
@@ -157,8 +170,8 @@ button:hover {
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  row-gap: 8px;
-  column-gap: 10px;
+  gap: 10px 14px;
+  margin-top: 10px;
 }
 
 .label {
@@ -177,13 +190,13 @@ button:hover {
    RESULTADO FINAL
 ========================= */
 .resultado-final {
-  margin-top: 14px;
-  padding: 12px;
-  background: #ecfdf5;
+  margin-top: 18px;
+  padding: 16px;
+  background: linear-gradient(135deg, #ecfdf5, #d1fae5);
   border: 1px solid #10b981;
-  border-radius: 8px;
+  border-radius: 12px;
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: #065f46;
 }
@@ -192,7 +205,7 @@ button:hover {
    AVISO
 ========================= */
 .aviso {
-  margin-top: 10px;
+  margin-top: 12px;
   font-size: 0.75rem;
   color: #6b7280;
   text-align: center;
@@ -216,4 +229,3 @@ button:hover {
     gap: 4px;
   }
 }
-
