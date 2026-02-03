@@ -2,72 +2,37 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Simulador Mensal – Tributação de Dividendos (Lei 2026)</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f6f8;
-      padding: 20px;
-    }
+  <title>Distribuição de Renda – Lei 2026</title>
+  <meta name="description" content="Simulador de tributação sobre dividendos e alta renda conforme Lei 2026.">
 
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .container {
-      max-width: 700px;
-      margin: auto;
-      background: #fff;
-      padding: 25px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    label {
-      font-weight: bold;
-      display: block;
-      margin-top: 15px;
-    }
-
-    input {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-    }
-
-    button {
-      margin-top: 20px;
-      width: 100%;
-      padding: 10px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .resultado {
-      margin-top: 25px;
-      background: #f0f0f0;
-      padding: 15px;
-      border-radius: 6px;
-    }
-
-    .linha {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-
-    .destaque {
-      font-weight: bold;
-    }
-  </style>
+  <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 
-  <h1>Simulador Mensal – Tributação de Dividendos e Alta Renda (Lei 2026)</h1>
+<!-- NAVBAR -->
+<div class="navbar">
+  <div class="nav-container">
+    <div class="logo">Simuladores Tributários</div>
+    <div class="breadcrumb">
+      <a href="/">Início</a>
+      <span>›</span>
+      <span>Distribuição de Renda</span>
+    </div>
+  </div>
+</div>
 
-  <div class="container">
+<!-- TOPO -->
+<div class="topo">
+  <h1>Distribuição de Renda – Lei 2026</h1>
+  <p>Tributação de dividendos e imposto mínimo anual</p>
+  <div class="autor">Finalidade educativa</div>
+</div>
 
+<!-- CONTAINER -->
+<div class="container">
+
+  <!-- CARD ENTRADA -->
+  <div class="card">
     <label>Dividendos mensais (R$)</label>
     <input type="number" id="dividendos" value="0">
 
@@ -77,22 +42,41 @@
     <label>IR já pago fora dos dividendos (mensal) (R$)</label>
     <input type="number" id="irOutros" value="0">
 
-    <button onclick="calcular()">Calcular</button>
+    <div class="acoes">
+      <button onclick="calcular()">Calcular</button>
+    </div>
+  </div>
 
-    <div class="resultado" id="resultado" style="display:none;">
-      <div class="linha"><span>IR mensal sobre dividendos</span><span id="irDiv"></span></div>
-      <div class="linha"><span>Renda mensal total</span><span id="rendaMensal"></span></div>
-      <hr>
-      <div class="linha"><span>Alíquota mínima anual</span><span id="aliquota"></span></div>
-      <div class="linha"><span>Imposto mínimo anual</span><span id="impostoMin"></span></div>
-      <div class="linha"><span>IR já pago no ano</span><span id="irPagoAno"></span></div>
-      <div class="linha"><span>Complemento anual a pagar</span><span id="complemento"></span></div>
-      <hr>
-      <div class="linha destaque"><span>Imposto mensal total</span><span id="impostoMensal"></span></div>
-      <div class="linha destaque"><span>Valor líquido mensal</span><span id="liquido"></span></div>
+  <!-- CARD RESULTADOS -->
+  <div class="card" id="resultado" style="display:none;">
+
+    <div class="grid">
+      <div class="label">IR mensal sobre dividendos</div>
+      <div class="value" id="irDiv"></div>
+
+      <div class="label">Renda mensal total</div>
+      <div class="value" id="rendaMensal"></div>
+
+      <div class="label">Alíquota mínima anual</div>
+      <div class="value" id="aliquota"></div>
+
+      <div class="label">Imposto mínimo anual</div>
+      <div class="value" id="impostoMin"></div>
+
+      <div class="label">IR já pago no ano</div>
+      <div class="value" id="irPagoAno"></div>
+
+      <div class="label">Complemento anual a pagar</div>
+      <div class="value" id="complemento"></div>
     </div>
 
+    <div class="resultado-final" id="impostoMensal"></div>
+
+    <div class="aviso" id="liquido"></div>
+
   </div>
+
+</div>
 
 <script>
 function calcular() {
@@ -101,19 +85,15 @@ function calcular() {
   const outros = Number(document.getElementById("outros").value);
   const irOutros = Number(document.getElementById("irOutros").value);
 
-  // IR mensal sobre dividendos
   let irDivMensal = 0;
   if (dividendos > 50000) {
     irDivMensal = dividendos * 0.10;
   }
 
   const rendaMensal = dividendos + outros;
-
-  // Projeção anual
   const rendaAnual = rendaMensal * 12;
   const irPagoAnual = (irDivMensal + irOutros) * 12;
 
-  // Alíquota mínima anual (Art. 16-A)
   let aliquotaMin = 0;
   if (rendaAnual <= 600000) {
     aliquotaMin = 0;
@@ -123,26 +103,40 @@ function calcular() {
     aliquotaMin = ((rendaAnual / 60000) - 10) / 100;
   }
 
-  // Imposto mínimo
   const impostoMinAnual = rendaAnual * aliquotaMin;
   let complementoAnual = impostoMinAnual - irPagoAnual;
   if (complementoAnual < 0) complementoAnual = 0;
 
-  // Custo mensal real
   const impostoMensalReal = impostoMinAnual / 12;
   const liquidoMensal = rendaMensal - impostoMensalReal;
 
-  // Exibição
   document.getElementById("resultado").style.display = "block";
 
-  document.getElementById("irDiv").innerText = irDivMensal.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
-  document.getElementById("rendaMensal").innerText = rendaMensal.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
-  document.getElementById("aliquota").innerText = (aliquotaMin * 100).toFixed(2) + "%";
-  document.getElementById("impostoMin").innerText = impostoMinAnual.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
-  document.getElementById("irPagoAno").innerText = irPagoAnual.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
-  document.getElementById("complemento").innerText = complementoAnual.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
-  document.getElementById("impostoMensal").innerText = impostoMensalReal.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
-  document.getElementById("liquido").innerText = liquidoMensal.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
+  document.getElementById("irDiv").innerText =
+    irDivMensal.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+
+  document.getElementById("rendaMensal").innerText =
+    rendaMensal.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+
+  document.getElementById("aliquota").innerText =
+    (aliquotaMin * 100).toFixed(2) + "%";
+
+  document.getElementById("impostoMin").innerText =
+    impostoMinAnual.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+
+  document.getElementById("irPagoAno").innerText =
+    irPagoAnual.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+
+  document.getElementById("complemento").innerText =
+    complementoAnual.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+
+  document.getElementById("impostoMensal").innerText =
+    "Imposto mensal total: " +
+    impostoMensalReal.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+
+  document.getElementById("liquido").innerText =
+    "Valor líquido mensal a receber: " +
+    liquidoMensal.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
 }
 </script>
 
