@@ -1,0 +1,219 @@
+/* =========================
+   RESET
+========================= */
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f4f6f9;
+  color: #1f2937;
+}
+
+/* =========================
+   NAVBAR / BREADCRUMB
+========================= */
+.navbar {
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
+  max-width: 760px;
+  margin: auto;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1e3a8a;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.breadcrumb a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   TOPO
+========================= */
+.topo {
+  background: #0b4ea2;
+  color: #ffffff;
+  padding: 16px 12px;
+  text-align: center;
+}
+
+.topo h1 {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.topo p {
+  margin: 4px 0;
+  font-size: 0.85rem;
+}
+
+.autor {
+  font-size: 0.75rem;
+  opacity: 0.85;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+.container {
+  max-width: 760px;
+  margin: 18px auto;
+  padding: 0 12px;
+}
+
+/* =========================
+   CARDS
+========================= */
+.card {
+  background: #ffffff;
+  border-radius: 8px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  padding: 14px;
+}
+
+/* =========================
+   INPUTS
+========================= */
+label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  margin-top: 10px;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 0.9rem;
+}
+
+input:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+/* =========================
+   BOTÃO
+========================= */
+.acoes {
+  display: flex;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+button {
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 9px 24px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+/* =========================
+   GRID RESULTADOS
+========================= */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 8px;
+  column-gap: 10px;
+}
+
+.label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.value {
+  font-size: 0.8rem;
+  text-align: right;
+  color: #111827;
+}
+
+/* =========================
+   RESULTADO FINAL
+========================= */
+.resultado-final {
+  margin-top: 14px;
+  padding: 12px;
+  background: #ecfdf5;
+  border: 1px solid #10b981;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #065f46;
+}
+
+/* =========================
+   AVISO
+========================= */
+.aviso {
+  margin-top: 10px;
+  font-size: 0.75rem;
+  color: #6b7280;
+  text-align: center;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .value {
+    text-align: left;
+  }
+
+  .nav-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
+
